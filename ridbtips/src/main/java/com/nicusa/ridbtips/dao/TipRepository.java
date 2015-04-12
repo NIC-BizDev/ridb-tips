@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface TipRepository extends CrudRepository<Tip, Long> {
 
-	List<Tip> findByRidbIdAndRidbType(Long ridbId, RidbType ridbType);
-	List<Tip> findByRidbIdAndRidbTypeAndUserCreated(Long ridbId, RidbType ridbType, Boolean userCreated);
+	List<Tip> findByRidbIdAndRidbTypeOrderByRatingDesc(Long ridbId, RidbType ridbType);
+	List<Tip> findByRidbIdAndRidbTypeAndUserCreatedOrderByRatingDesc(Long ridbId, RidbType ridbType, Boolean userCreated);
 
 }

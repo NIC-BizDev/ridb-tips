@@ -23,12 +23,12 @@ public class TourTipService implements TipService {
 
 	@Override
 	public List<Tip> findAllTips(Long ridbId) {
-		return tipRepository.findByRidbIdAndRidbType(ridbId, RidbType.TOUR);
+		return tipRepository.findByRidbIdAndRidbTypeOrderByRatingDesc(ridbId, RidbType.TOUR);
 	}
 
 	@Override
 	public List<Tip> findNonUserCreatedTips(Long ridbId) {
-		return tipRepository.findByRidbIdAndRidbTypeAndUserCreated(ridbId, RidbType.TOUR, Boolean.FALSE);
+		return tipRepository.findByRidbIdAndRidbTypeAndUserCreatedOrderByRatingDesc(ridbId, RidbType.TOUR, Boolean.FALSE);
 	}
 
 	@Override

@@ -24,13 +24,13 @@ public class EventTipService implements TipService {
 	@Override
 	@Transactional
 	public List<Tip> findAllTips(Long ridbId) {
-		return tipRepository.findByRidbIdAndRidbType(ridbId, RidbType.EVENT);
+		return tipRepository.findByRidbIdAndRidbTypeOrderByRatingDesc(ridbId, RidbType.EVENT);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public List<Tip> findNonUserCreatedTips(Long ridbId) {
-		return tipRepository.findByRidbIdAndRidbTypeAndUserCreated(ridbId, RidbType.EVENT, Boolean.FALSE);
+		return tipRepository.findByRidbIdAndRidbTypeAndUserCreatedOrderByRatingDesc(ridbId, RidbType.EVENT, Boolean.FALSE);
 	}
 
 	@Override

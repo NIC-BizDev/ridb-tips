@@ -24,12 +24,12 @@ public class PermitEntranceTipService implements TipService {
 	@Override
 	@Transactional(readOnly = true)
 	public List<Tip> findAllTips(Long ridbId) {
-		return tipRepository.findByRidbIdAndRidbType(ridbId, RidbType.PERMIT_ENTRANCE);
+		return tipRepository.findByRidbIdAndRidbTypeOrderByRatingDesc(ridbId, RidbType.PERMIT_ENTRANCE);
 	}
 
 	@Override
 	public List<Tip> findNonUserCreatedTips(Long ridbId) {
-		return tipRepository.findByRidbIdAndRidbTypeAndUserCreated(ridbId, RidbType.PERMIT_ENTRANCE, Boolean.FALSE);
+		return tipRepository.findByRidbIdAndRidbTypeAndUserCreatedOrderByRatingDesc(ridbId, RidbType.PERMIT_ENTRANCE, Boolean.FALSE);
 	}
 
 	@Override

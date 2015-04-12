@@ -24,13 +24,13 @@ public class RecreationAreaActivityTipService implements TipService {
 	@Override
 	@Transactional(readOnly = true)
 	public List<Tip> findAllTips(Long ridbId) {
-		return tipRepository.findByRidbIdAndRidbType(ridbId, RidbType.RECREATION_AREA_ACTIVITY);
+		return tipRepository.findByRidbIdAndRidbTypeOrderByRatingDesc(ridbId, RidbType.RECREATION_AREA_ACTIVITY);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public List<Tip> findNonUserCreatedTips(Long ridbId) {
-		return tipRepository.findByRidbIdAndRidbTypeAndUserCreated(ridbId,
+		return tipRepository.findByRidbIdAndRidbTypeAndUserCreatedOrderByRatingDesc(ridbId,
 				RidbType.RECREATION_AREA_ACTIVITY, Boolean.FALSE);
 	}
 
